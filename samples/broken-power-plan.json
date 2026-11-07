@@ -1,0 +1,46 @@
+{
+  "schedules": [
+    {
+      "name": "dev-nightly-stop",
+      "action": "STOP",
+      "time_utc": "15:30",
+      "days": ["MO", "TU", "WE", "TH", "FR"],
+      "tag_selector": {"env": "dev"}
+    },
+    {
+      "name": "qa-nightly-stop",
+      "action": "STOP",
+      "time_utc": "16:00",
+      "days": ["MO", "TU", "WE", "TH", "FR"],
+      "tag_selector": {"env": "qa"}
+    },
+    {
+      "name": "qa-morning-start",
+      "action": "START",
+      "time_utc": "02:30",
+      "days": ["MO", "TU", "WE", "TH", "FR"],
+      "tag_selector": {"env": "qa"}
+    },
+    {
+      "name": "qa-evening-conflict",
+      "action": "STOP",
+      "time_utc": "02:30",
+      "days": ["FR"],
+      "tag_selector": {"env": "qa"}
+    },
+    {
+      "name": "weekend-ghost",
+      "action": "STOP",
+      "time_utc": "25:00",
+      "days": ["SAT", "SUN"],
+      "tag_selector": {"env": "staging"}
+    }
+  ],
+  "instances": [
+    {"name": "dev-app-1", "tags": {"env": "dev", "schedule": "nightly"}},
+    {"name": "dev-app-2", "tags": {"env": "dev", "schedule": "nightly"}},
+    {"name": "qa-app-1", "tags": {"env": "qa", "schedule": "nightly"}},
+    {"name": "sandbox-1", "tags": {"env": "sandbox", "schedule": "nightly"}},
+    {"name": "prod-web-1", "tags": {"env": "prod"}}
+  ]
+}
