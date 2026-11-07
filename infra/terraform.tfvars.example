@@ -1,0 +1,2 @@
+compartment_ocid = "ocid1.compartment.oc1..example...replace-me"
+instance_ocids   = ["ocid1.instance.oc1..example...replace-me"]
